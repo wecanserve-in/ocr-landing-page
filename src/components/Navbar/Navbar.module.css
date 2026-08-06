@@ -1,0 +1,273 @@
+.navbar {
+  position: fixed;
+  top: 0;
+  left: 0;
+  z-index: 1000;
+
+  width: 100%;
+  height: 78px;
+
+  display: flex;
+  align-items: center;
+
+  background: rgba(255, 255, 255, 0.88);
+  border-bottom: 1px solid transparent;
+
+  backdrop-filter: blur(18px);
+  -webkit-backdrop-filter: blur(18px);
+
+  transition:
+    height 0.25s ease,
+    background-color 0.25s ease,
+    border-color 0.25s ease,
+    box-shadow 0.25s ease;
+}
+
+.navbarScrolled {
+  height: 70px;
+
+  background: rgba(255, 255, 255, 0.96);
+  border-color: rgba(15, 23, 42, 0.07);
+
+  box-shadow: 0 12px 35px rgba(15, 23, 42, 0.06);
+}
+
+.navbarContainer {
+  width: min(1320px, calc(100% - 48px));
+  margin: 0 auto;
+
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+  gap: 32px;
+}
+
+.brand {
+  display: inline-flex;
+  align-items: center;
+  gap: 11px;
+
+  flex-shrink: 0;
+
+  color: #101828;
+  text-decoration: none;
+}
+
+.logo {
+  width: 40px;
+  height: 40px;
+
+  display: inline-flex;
+  align-items: center;
+  justify-content: center;
+
+  color: #ffffff;
+  background: linear-gradient(145deg, #18b75b, #079443);
+
+  border-radius: 11px;
+
+  box-shadow: 0 8px 20px rgba(12, 166, 75, 0.2);
+}
+
+.brandName {
+  font-size: 22px;
+  font-weight: 800;
+  letter-spacing: -0.7px;
+}
+
+.desktopNavigation {
+  display: flex;
+  align-items: center;
+  gap: 38px;
+}
+
+.navLink {
+  position: relative;
+
+  color: #1d2939;
+
+  font-size: 14px;
+  font-weight: 600;
+  text-decoration: none;
+
+  transition: color 0.2s ease;
+}
+
+.navLink::after {
+  content: "";
+
+  position: absolute;
+  left: 0;
+  bottom: -7px;
+
+  width: 0;
+  height: 2px;
+
+  background: #0cac4c;
+  border-radius: 999px;
+
+  transition: width 0.2s ease;
+}
+
+.navLink:hover {
+  color: #0a9d45;
+}
+
+.navLink:hover::after {
+  width: 100%;
+}
+
+.downloadButton {
+  min-height: 43px;
+  padding: 0 21px;
+
+  display: inline-flex;
+  align-items: center;
+  justify-content: center;
+  gap: 8px;
+
+  color: #ffffff;
+  background: linear-gradient(135deg, #13b354, #079746);
+
+  border-radius: 10px;
+
+  font-size: 14px;
+  font-weight: 700;
+  text-decoration: none;
+
+  box-shadow: 0 10px 24px rgba(11, 161, 72, 0.2);
+
+  transition:
+    transform 0.2s ease,
+    box-shadow 0.2s ease;
+}
+
+.downloadButton:hover {
+  transform: translateY(-2px);
+
+  box-shadow: 0 14px 28px rgba(11, 161, 72, 0.27);
+}
+
+.menuButton {
+  width: 44px;
+  height: 44px;
+
+  display: none;
+  align-items: center;
+  justify-content: center;
+
+  color: #101828;
+  background: #ffffff;
+
+  border: 1px solid #e6e9ed;
+  border-radius: 11px;
+
+  cursor: pointer;
+}
+
+.mobileMenu {
+  position: fixed;
+  top: 78px;
+  left: 0;
+
+  width: 100%;
+
+  visibility: hidden;
+  opacity: 0;
+  transform: translateY(-15px);
+
+  background: rgba(255, 255, 255, 0.98);
+  border-top: 1px solid #edf0f2;
+  border-bottom: 1px solid #edf0f2;
+
+  pointer-events: none;
+
+  transition:
+    opacity 0.25s ease,
+    transform 0.25s ease,
+    visibility 0.25s ease;
+}
+
+.mobileMenuOpen {
+  visibility: visible;
+  opacity: 1;
+  transform: translateY(0);
+
+  pointer-events: auto;
+}
+
+.mobileNavigation {
+  width: min(100% - 36px, 600px);
+  margin: 0 auto;
+  padding: 18px 0 24px;
+
+  display: flex;
+  flex-direction: column;
+  gap: 4px;
+}
+
+.mobileNavigation > a:not(.mobileDownloadButton) {
+  padding: 14px 10px;
+
+  color: #1d2939;
+
+  font-size: 16px;
+  font-weight: 650;
+  text-decoration: none;
+
+  border-bottom: 1px solid #f0f2f4;
+}
+
+.mobileDownloadButton {
+  min-height: 48px;
+  margin-top: 14px;
+
+  display: inline-flex;
+  align-items: center;
+  justify-content: center;
+  gap: 9px;
+
+  color: #ffffff;
+  background: #0aa74a;
+
+  border-radius: 11px;
+
+  font-size: 15px;
+  font-weight: 750;
+  text-decoration: none;
+}
+
+@media (max-width: 950px) {
+  .desktopNavigation,
+  .downloadButton {
+    display: none;
+  }
+
+  .menuButton {
+    display: inline-flex;
+  }
+}
+
+@media (max-width: 600px) {
+  .navbar,
+  .navbarScrolled {
+    height: 68px;
+  }
+
+  .navbarContainer {
+    width: calc(100% - 28px);
+  }
+
+  .logo {
+    width: 37px;
+    height: 37px;
+  }
+
+  .brandName {
+    font-size: 20px;
+  }
+
+  .mobileMenu {
+    top: 68px;
+  }
+}

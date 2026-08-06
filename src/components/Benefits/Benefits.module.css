@@ -1,0 +1,160 @@
+.section {
+  padding: 70px 0 100px;
+  background: #f9fafb;
+}
+
+.container {
+  width: min(1320px, calc(100% - 48px));
+  margin: 0 auto;
+}
+
+.headingArea {
+  max-width: 680px;
+  margin: 0 auto 48px;
+  text-align: center;
+}
+
+.title {
+  margin: 0;
+
+  color: #101828;
+
+  font-size: clamp(30px, 3vw, 42px);
+  line-height: 1.1;
+  letter-spacing: -1.5px;
+  font-weight: 850;
+}
+
+.title span {
+  color: #0aa64a;
+}
+
+.grid {
+  display: grid;
+  grid-template-columns: repeat(6, minmax(0, 1fr));
+  gap: 22px;
+}
+
+.card {
+  background: #ffffff;
+  border: 1px solid #e5e7eb;
+  border-radius: 18px;
+  padding: 30px 20px 26px;
+  text-align: center;
+  transition:
+    transform 0.25s ease,
+    box-shadow 0.25s ease,
+    border-color 0.25s ease;
+}
+
+.card:hover {
+  transform: translateY(-6px);
+  box-shadow: 0 16px 40px rgba(15, 23, 42, 0.07);
+  border-color: rgba(21, 176, 82, 0.25);
+}
+
+.iconCircle {
+  width: 56px;
+  height: 56px;
+  margin: 0 auto 18px;
+
+  display: inline-flex;
+  align-items: center;
+  justify-content: center;
+
+  border-radius: 50%;
+}
+
+.greenTone {
+  color: #16a34a;
+  background: #dcfce7;
+}
+
+.yellowTone {
+  color: #d97706;
+  background: #fef3c7;
+}
+
+.blueTone {
+  color: #2563eb;
+  background: #dbeafe;
+}
+
+.indigoTone {
+  color: #4f46e5;
+  background: #e0e7ff;
+}
+
+.emeraldTone {
+  color: #059669;
+  background: #d1fae5;
+}
+
+.redTone {
+  color: #dc2626;
+  background: #fee2e2;
+}
+
+.card h3 {
+  margin: 0 0 8px;
+
+  color: #111827;
+
+  font-size: 16px;
+  line-height: 1.3;
+  font-weight: 750;
+}
+
+.card p {
+  margin: 0;
+
+  color: #6b7280;
+
+  font-size: 13px;
+  line-height: 1.6;
+}
+
+@media (max-width: 1100px) {
+  .grid {
+    grid-template-columns: repeat(3, minmax(0, 1fr));
+    gap: 18px;
+  }
+}
+
+@media (max-width: 700px) {
+  .section {
+    padding: 50px 0 80px;
+  }
+
+  .container {
+    width: calc(100% - 28px);
+  }
+
+  .headingArea {
+    margin-bottom: 36px;
+  }
+
+  .grid {
+    grid-template-columns: repeat(2, minmax(0, 1fr));
+    gap: 14px;
+  }
+
+  .card {
+    padding: 24px 16px 22px;
+  }
+
+  .iconCircle {
+    width: 48px;
+    height: 48px;
+  }
+
+  .card h3 {
+    font-size: 15px;
+  }
+}
+
+@media (max-width: 480px) {
+  .grid {
+    grid-template-columns: 1fr;
+  }
+}
