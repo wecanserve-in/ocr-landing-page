@@ -4,7 +4,7 @@ import HowItWorks from "./components/HowItWorks/HowItWorks";
 import DemoVideo from "./components/DemoVideo/DemoVideo";
 import Benefits from "./components/Benefits/Benefits";
 import Plans from "./components/Plans/Plans";
-import WhyDownload from "./components/WhyDownload/WhyDownload";
+// import WhyDownload from "./components/WhyDownload/WhyDownload";
 import CTABanner from "./components/CTABanner/CTABanner";
 import Footer from "./components/Footer/Footer";
 import "./App.css";
@@ -19,7 +19,7 @@ function App() {
         <DemoVideo />
         <Benefits />
         <Plans />
-        <WhyDownload />
+        {/* <WhyDownload /> */}
         <CTABanner />
       </main>
       <Footer />

@@ -1,99 +1,185 @@
-import { motion } from "framer-motion";
-import { Check } from "lucide-react";
+import { useState } from "react";
+import { motion, AnimatePresence } from "framer-motion";
+import { Check, Download, Zap } from "lucide-react";
 import styles from "./Plans.module.css";
 
-const plans = [
-  {
-    name: "Starter",
-    subtitle: "Perfect for Individuals",
-    price: "₹199",
-    period: "/month",
-    features: ["100 Cards / Month", "Export to Excel", "Basic Support"],
-    popular: false,
-  },
-  {
-    name: "Business Monthly",
-    subtitle: "Best for Professionals",
-    price: "₹499",
-    period: "/month",
-    features: [
-      "500 Cards / Month",
-      "Export to Excel, CSV",
-      "Priority Support",
-    ],
-    popular: true,
-  },
-  {
-    name: "Business Yearly",
-    subtitle: "Save more with yearly plan",
-    price: "₹4,999",
-    period: "/year",
-    features: [
-      "5000 Cards / Year",
-      "Export to Excel, CSV",
-      "Priority Support + More",
-    ],
-    popular: false,
-  },
-];
+interface PlanItem {
+  id: string;
+  name: string;
+  price: string;
+  gstNote: string;
+  cards: string;
+  ratePerCard: string;
+  badge?: string;
+  featured?: boolean;
+  accent: "green" | "orange" | "purple" | "blue" | "teal";
+}
+
+const plansData: Record<"personal" | "business", PlanItem[]> = {
+  personal: [
+    {
+      id: "p-starter",
+      name: "Starter",
+      price: "₹99",
+      gstNote: "+ 18% GST",
+      cards: "50 Cards",
+      ratePerCard: "₹2 per card",
+      accent: "green",
+    },
+    {
+      id: "p-popular",
+      name: "Popular",
+      price: "₹499",
+      gstNote: "+ 18% GST",
+      cards: "750 Cards",
+      ratePerCard: "₹1.5 per card",
+      badge: "Best Value",
+      featured: true,
+      accent: "orange",
+    },
+    {
+      id: "p-pro",
+      name: "Pro",
+      price: "₹999",
+      gstNote: "+ 18% GST",
+      cards: "1,000 Cards",
+      ratePerCard: "₹1 per card",
+      accent: "purple",
+    },
+  ],
+  business: [
+    {
+      id: "b-starter",
+      name: "Business Starter",
+      price: "₹2,499",
+      gstNote: "+ 18% GST",
+      cards: "2,775 Cards",
+      ratePerCard: "₹0.90 per card",
+      accent: "blue",
+    },
+    {
+      id: "b-pro",
+      name: "Business Pro",
+      price: "₹3,999",
+      gstNote: "+ 18% GST",
+      cards: "5,710 Cards",
+      ratePerCard: "₹0.70 per card",
+      badge: "Best Value",
+      featured: true,
+      accent: "teal",
+    },
+    {
+      id: "b-enterprise",
+      name: "Business Enterprise",
+      price: "₹5,999",
+      gstNote: "+ 18% GST",
+      cards: "10,000 Cards",
+      ratePerCard: "₹0.60 per card",
+      accent: "orange",
+    },
+  ],
+};
 
 export default function Plans() {
+  const [tab, setTab] = useState<"personal" | "business">("personal");
+
   return (
-    <section className={styles.section} id="plans">
+    <section id="plans" className={styles.section}>
       <div className={styles.container}>
         <motion.div
-          className={styles.headingArea}
-          initial={{ opacity: 0, y: 24 }}
+          className={styles.header}
+          initial={{ opacity: 0, y: 20 }}
           whileInView={{ opacity: 1, y: 0 }}
-          viewport={{ once: true, amount: 0.3 }}
-          transition={{ duration: 0.6 }}
+          viewport={{ once: true }}
+          transition={{ duration: 0.5 }}
         >
           <h2 className={styles.title}>
-            Simple Plans for <span>Everyone</span>
+            Choose Your <span>Plan</span>
           </h2>
+          <p className={styles.subtitle}>
+            Buy credits once. Scan cards anytime.
+          </p>
+
+          <div className={styles.tabWrapper}>
+            <button
+              type="button"
+              className={`${styles.tabBtn} ${
+                tab === "personal" ? styles.activeTab : ""
+              }`}
+              onClick={() => setTab("personal")}
+            >
+              Personal
+            </button>
+            <button
+              type="button"
+              className={`${styles.tabBtn} ${
+                tab === "business" ? styles.activeTab : ""
+              }`}
+              onClick={() => setTab("business")}
+            >
+              Business
+            </button>
+          </div>
         </motion.div>
 
-        <div className={styles.grid}>
-          {plans.map((plan, index) => (
-            <motion.div
-              key={plan.name}
-              className={`${styles.card} ${plan.popular ? styles.popular : ""}`}
-              initial={{ opacity: 0, y: 30 }}
-              whileInView={{ opacity: 1, y: 0 }}
-              viewport={{ once: true, amount: 0.2 }}
-              transition={{ duration: 0.45, delay: index * 0.12 }}
-            >
-              {plan.popular && (
-                <span className={styles.badge}>Most Popular</span>
-              )}
-
-              <h3>{plan.name}</h3>
-              <p className={styles.subtitle}>{plan.subtitle}</p>
-
-              <div className={styles.priceRow}>
-                <span className={styles.price}>{plan.price}</span>
-                <span className={styles.period}>{plan.period}</span>
-              </div>
-
-              <ul className={styles.featureList}>
-                {plan.features.map((f) => (
-                  <li key={f}>
-                    <Check size={18} className={styles.checkIcon} />
-                    <span>{f}</span>
-                  </li>
-                ))}
-              </ul>
-
-              <button
-                className={`${styles.ctaBtn} ${
-                  plan.popular ? styles.ctaPrimary : styles.ctaOutline
+        <AnimatePresence mode="wait">
+          <motion.div
+            key={tab}
+            className={styles.cardsGrid}
+            initial={{ opacity: 0, y: 15 }}
+            animate={{ opacity: 1, y: 0 }}
+            exit={{ opacity: 0, y: -15 }}
+            transition={{ duration: 0.3 }}
+          >
+            {plansData[tab].map((plan) => (
+              <div
+                key={plan.id}
+                className={`${styles.planCard} ${styles[plan.accent]} ${
+                  plan.featured ? styles.featuredCard : ""
                 }`}
               >
-                Get Started
-              </button>
-            </motion.div>
-          ))}
-        </div>
+                {plan.badge && (
+                  <span className={styles.bestValueBadge}>{plan.badge}</span>
+                )}
+
+                <div className={styles.cardHeader}>
+                  <div>
+                    <h3 className={styles.planName}>{plan.name}</h3>
+                    <div className={styles.priceRow}>
+                      <span className={styles.price}>{plan.price}</span>
+                      <span className={styles.gst}>{plan.gstNote}</span>
+                    </div>
+                  </div>
+
+                  <div className={styles.cardsInfo}>
+                    <strong className={styles.cardsCount}>{plan.cards}</strong>
+                    <span className={styles.rate}>{plan.ratePerCard}</span>
+                  </div>
+                </div>
+
+                <div className={styles.featuresList}>
+                  <div className={styles.featureItem}>
+                    <Check size={18} className={styles.checkIcon} />
+                    <span>{plan.cards} included</span>
+                  </div>
+                  <div className={styles.featureItem}>
+                    <Check size={18} className={styles.checkIcon} />
+                    <span>Smart Folder Organization</span>
+                  </div>
+                  <div className={styles.featureItem}>
+                    <Check size={18} className={styles.checkIcon} />
+                    <span>Instant CSV &amp; vCard Export</span>
+                  </div>
+                </div>
+
+                <a href="#download" className={styles.ctaButton}>
+                  <Zap size={16} />
+                  Get {plan.name}
+                </a>
+              </div>
+            ))}
+          </motion.div>
+        </AnimatePresence>
       </div>
     </section>
   );

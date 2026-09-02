@@ -1,16 +1,16 @@
 import { motion } from "framer-motion";
-import { Download, CreditCard, Contact, TrendingUp } from "lucide-react";
+import { Download, Layers, ShieldCheck, Zap } from "lucide-react";
 import styles from "./WhyDownload.module.css";
 
 const highlights = [
-  { icon: CreditCard, label: "No More Lost Cards" },
-  { icon: Contact, label: "Always Have Your Contacts" },
-  { icon: TrendingUp, label: "Boost Your Productivity" },
+  { icon: Zap, label: "Zero Manual Data Entry" },
+  { icon: Layers, label: "Instant CRM & Phone Sync" },
+  { icon: ShieldCheck, label: "100% Encrypted & Safe" },
 ];
 
 export default function WhyDownload() {
   return (
-    <section className={styles.section} id="why-wecanserve">
+    <section className={styles.section} id="why-scanmycard">
       <div className={styles.container}>
         <motion.div
           className={styles.card}
@@ -32,10 +32,9 @@ export default function WhyDownload() {
           </div>
 
           <div className={styles.content}>
-            <h2 className={styles.title}>Why Download Our App?</h2>
+            <h2 className={styles.title}>Why Choose ScanMyCard?</h2>
             <p className={styles.description}>
-              Because your network deserves better than being lost in a drawer.
-              Go paperless, stay organized, and grow your connections.
+              Business cards left in pockets or drawers lead to lost deals. ScanMyCard converts every paper exchange into an actionable, searchable digital pipeline.
             </p>
           </div>
 
@@ -51,10 +50,10 @@ export default function WhyDownload() {
             })}
           </div>
 
-          <button className={styles.ctaBtn}>
+          <a href="#download" className={styles.ctaBtn}>
             <Download size={18} />
-            Download Now
-          </button>
+            Try ScanMyCard Free
+          </a>
         </motion.div>
       </div>
     </section>

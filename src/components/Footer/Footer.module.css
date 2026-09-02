@@ -1,6 +1,6 @@
 .footer {
-  background: #f9fafb;
-  border-top: 1px solid #e5e7eb;
+  background: #f8fafc;
+  border-top: 1px solid #e2e8f0;
   padding: 56px 0 0;
 }
 
@@ -26,27 +26,15 @@
   margin-bottom: 14px;
 }
 
-.logoIcon {
-  width: 38px;
-  height: 38px;
-  background: #16a34a;
-  color: #ffffff;
-  border-radius: 10px;
-  display: flex;
-  align-items: center;
-  justify-content: center;
-}
-
-.logoText {
-  color: #111827;
-  font-size: 20px;
-  font-weight: 800;
-  letter-spacing: -0.4px;
+.footerLogoImage {
+  height: 42px;
+  width: auto;
+  object-fit: contain;
+  display: block;
 }
 
 .brandDesc {
   margin: 0 0 18px;
-
   color: #6b7280;
   font-size: 14px;
   line-height: 1.65;
@@ -61,32 +49,25 @@
 .socialLink {
   width: 36px;
   height: 36px;
-
   display: inline-flex;
   align-items: center;
   justify-content: center;
-
   color: #6b7280;
   background: #ffffff;
-  border: 1px solid #e5e7eb;
+  border: 1px solid #e2e8f0;
   border-radius: 8px;
-
-  transition:
-    color 0.2s ease,
-    border-color 0.2s ease,
-    background 0.2s ease;
+  transition: color 0.2s ease, border-color 0.2s ease, background 0.2s ease;
 }
 
 .socialLink:hover {
-  color: #16a34a;
-  border-color: #bbf7d0;
-  background: #f0fdf4;
+  color: #004ad9;
+  border-color: #c7dcff;
+  background: #edf3ff;
 }
 
 .linkGroup h4,
 .contact h4 {
   margin: 0 0 16px;
-
   color: #111827;
   font-size: 15px;
   font-weight: 750;
@@ -114,14 +95,13 @@
 }
 
 .linkGroup a:hover {
-  color: #16a34a;
+  color: #004ad9;
 }
 
 .contact li {
   display: flex;
   align-items: center;
   gap: 10px;
-
   color: #6b7280;
   font-size: 14px;
   line-height: 1.6;
@@ -129,20 +109,18 @@
 
 .contactIcon {
   flex-shrink: 0;
-
-  color: #16a34a;
+  color: #004ad9;
 }
 
 .bottomBar {
   margin-top: 40px;
   padding: 20px 0;
-  border-top: 1px solid #e5e7eb;
+  border-top: 1px solid #e2e8f0;
   text-align: center;
 }
 
 .bottomBar p {
   margin: 0;
-
   color: #9ca3af;
   font-size: 13px;
 }

@@ -1,6 +1,6 @@
 .section {
-  padding: 50px 0 80px;
-  background: #f9fafb;
+  padding: 60px 0 90px;
+  background: #f8fafc;
 }
 
 .container {
@@ -9,20 +9,28 @@
 }
 
 .card {
-  background: linear-gradient(135deg, #f0fdf4 0%, #ecfdf5 50%, #f0fdfa 100%);
-  border: 1.5px solid #bbf7d0;
+  background: linear-gradient(135deg, #f0f5ff 0%, #edf3ff 50%, #f4fdf0 100%);
+  border: 1.5px solid #c7dcff;
   border-radius: 24px;
   padding: 44px 48px;
-  display: grid;
-  grid-template-columns: auto 1fr auto auto;
+  display: flex;
+  flex-direction: column;
   gap: 32px;
+  position: relative;
+  overflow: hidden;
+}
+
+.topRow {
+  display: flex;
   align-items: center;
+  gap: 32px;
 }
 
 .leftArea {
   display: flex;
   align-items: center;
   justify-content: center;
+  flex-shrink: 0;
 }
 
 .phoneWrap {
@@ -46,7 +54,7 @@
 .phoneScreen {
   width: 100%;
   height: 100%;
-  background: #f0fdf4;
+  background: #edf3ff;
   border-radius: 9px;
   display: flex;
   align-items: center;
@@ -56,7 +64,7 @@
 .avatarCircle {
   width: 26px;
   height: 26px;
-  background: #86efac;
+  background: #004ad9;
   border-radius: 50%;
 }
 
@@ -66,9 +74,9 @@
   right: -6px;
   width: 28px;
   height: 28px;
-  background: #4ade80;
+  background: #5bb300;
   border-radius: 50% 0 50% 50%;
-  opacity: 0.7;
+  opacity: 0.8;
   z-index: 1;
 }
 
@@ -78,22 +86,21 @@
   left: -8px;
   width: 22px;
   height: 22px;
-  background: #22c55e;
+  background: #004ad9;
   border-radius: 0 50% 50% 50%;
-  opacity: 0.6;
+  opacity: 0.7;
   z-index: 1;
 }
 
 .content {
+  flex: 1;
   min-width: 0;
 }
 
 .title {
   margin: 0 0 8px;
-
   color: #111827;
-
-  font-size: clamp(22px, 2.2vw, 28px);
+  font-size: clamp(24px, 2.4vw, 32px);
   line-height: 1.2;
   letter-spacing: -0.6px;
   font-weight: 850;
@@ -101,92 +108,101 @@
 
 .description {
   margin: 0;
-
   color: #6b7280;
+  font-size: 15px;
+  line-height: 1.6;
+  max-width: 700px;
+}
 
-  font-size: 14px;
-  line-height: 1.65;
-  max-width: 380px;
+.bottomRow {
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+  gap: 20px;
+  flex-wrap: wrap;
+  padding-top: 8px;
+  border-top: 1px solid rgba(0, 74, 217, 0.15);
 }
 
 .highlights {
   display: flex;
   align-items: center;
-  gap: 14px;
+  gap: 12px;
+  flex-wrap: wrap;
 }
 
 .pill {
   display: inline-flex;
   align-items: center;
   gap: 8px;
-
   padding: 10px 18px;
-
   background: #ffffff;
-  border: 1px solid #e5e7eb;
+  border: 1px solid #d4e2fc;
   border-radius: 12px;
-
   font-size: 13px;
   font-weight: 600;
   color: #374151;
-  white-space: nowrap;
+  box-shadow: 0 2px 6px rgba(0, 0, 0, 0.03);
 }
 
 .pillIcon {
   flex-shrink: 0;
-  color: #16a34a;
+  color: #5bb300;
 }
 
 .ctaBtn {
   display: inline-flex;
   align-items: center;
   gap: 10px;
-
-  padding: 14px 28px;
-
+  padding: 13px 26px;
   color: #ffffff;
-  background: #16a34a;
-
+  background: #004ad9;
   border: none;
   border-radius: 12px;
-
-  font-size: 15px;
+  font-size: 14px;
   font-weight: 700;
+  text-decoration: none;
   white-space: nowrap;
-
   cursor: pointer;
-
-  transition:
-    background 0.25s ease,
-    transform 0.25s ease,
-    box-shadow 0.25s ease;
+  box-shadow: 0 8px 20px rgba(0, 74, 217, 0.25);
+  transition: transform 0.25s ease, background 0.25s ease, box-shadow 0.25s ease;
 }
 
 .ctaBtn:hover {
-  background: #15803d;
+  background: #0037a8;
   transform: translateY(-2px);
-  box-shadow: 0 8px 24px rgba(22, 163, 74, 0.35);
+  box-shadow: 0 10px 24px rgba(0, 74, 217, 0.35);
 }
 
-@media (max-width: 1100px) {
-  .card {
-    grid-template-columns: auto 1fr;
-    gap: 24px 32px;
-    padding: 36px 32px;
+@media (max-width: 900px) {
+  .topRow {
+    flex-direction: column;
+    text-align: center;
+    gap: 20px;
+  }
+
+  .description {
+    max-width: 100%;
+  }
+
+  .bottomRow {
+    flex-direction: column;
+    align-items: center;
+    gap: 18px;
   }
 
   .highlights {
-    grid-column: 1 / -1;
-    flex-wrap: wrap;
+    justify-content: center;
   }
 
   .ctaBtn {
-    grid-column: 1 / -1;
-    justify-self: start;
+    width: 100%;
+    max-width: 280px;
+    justify-content: center;
   }
 }
 
-@media (max-width: 700px) {
+@media (max-width: 600px) {
   .section {
     padding: 30px 0 60px;
   }
@@ -196,24 +212,6 @@
   }
 
   .card {
-    grid-template-columns: 1fr;
-    text-align: center;
-    padding: 30px 22px;
-  }
-
-  .leftArea {
-    justify-content: center;
-  }
-
-  .description {
-    max-width: 100%;
-  }
-
-  .highlights {
-    justify-content: center;
-  }
-
-  .ctaBtn {
-    justify-self: center;
+    padding: 30px 20px;
   }
 }

@@ -4,11 +4,9 @@ import {
   Download,
   Play,
   ScanLine,
-  ShieldCheck,
-  WifiOff,
 } from "lucide-react";
 import styles from "./Hero.module.css";
-import appHomeImage from "../../assets/app-home.png";
+import appHomeImage from "../../assets/app-home.jpeg";
 
 const Hero = () => {
   return (
@@ -21,92 +19,53 @@ const Hero = () => {
       <span className={`${styles.decorativePlus} ${styles.plusThree}`}>+</span>
 
       <div className={styles.heroContainer}>
+        {/* LEFT CONTENT */}
         <motion.div
           className={styles.heroContent}
           initial={{ opacity: 0, x: -35 }}
           animate={{ opacity: 1, x: 0 }}
           transition={{ duration: 0.7, ease: "easeOut" }}
         >
-          <div className={styles.badge}>
-            <ScanLine size={16} />
-            <span>AI-Powered Business Card Scanner</span>
-          </div>
-
           <h1 className={styles.heroTitle}>
-            Scan. Save. Connect.
+            SCAN.
             <br />
-            All in{" "}
+            MANAGE.
+            <br />
             <span className={styles.highlightedText}>
-              One Scan
+              CONNECT.
               <span className={styles.underline}></span>
             </span>
-            .
           </h1>
-
-          <p className={styles.heroDescription}>
-            Turn business cards into organized digital contacts in seconds.
-            Extract accurate details, save contacts securely, and manage your
-            professional network from one place.
-          </p>
 
           <div className={styles.heroButtons}>
             <a href="#download" className={styles.primaryButton}>
               <Download size={19} />
-              Download App
+              Download ScanMyCard
             </a>
 
-            <a href="#how-it-works" className={styles.secondaryButton}>
+            <a href="#demo" className={styles.secondaryButton}>
               <span className={styles.playIcon}>
                 <Play size={15} fill="currentColor" />
               </span>
-              See How It Works
+              Watch Demo
             </a>
-          </div>
-
-          <div className={styles.featureRow}>
-            <div className={styles.featureItem}>
-              <span className={styles.featureIcon}>
-                <ScanLine size={16} />
-              </span>
-              AI-Powered OCR
-            </div>
-
-            <div className={styles.featureItem}>
-              <span className={styles.featureIcon}>
-                <ShieldCheck size={16} />
-              </span>
-              100% Secure
-            </div>
-
-            <div className={styles.featureItem}>
-              <span className={styles.featureIcon}>
-                <WifiOff size={16} />
-              </span>
-              Works Offline
-            </div>
-          </div>
-
-          <div className={styles.trustedSection}>
-            <p>Trusted by professionals and businesses worldwide</p>
-
-            <div className={styles.companyRow}>
-              <span>Bank of Baroda</span>
-              <span>SOMONI-PHARM</span>
-              <span>THERMOLAB</span>
-              <span>Metro Mumbai</span>
-              <span>TATA MOTORS</span>
-            </div>
           </div>
         </motion.div>
 
+        {/* RIGHT VISUAL */}
         <motion.div
           className={styles.visualArea}
           initial={{ opacity: 0, x: 40 }}
           animate={{ opacity: 1, x: 0 }}
-          transition={{ duration: 0.8, delay: 0.1, ease: "easeOut" }}
+          transition={{
+            duration: 0.8,
+            delay: 0.1,
+            ease: "easeOut",
+          }}
         >
           <div className={styles.visualBackground}></div>
 
+          {/* PHONE */}
           <motion.div
             className={styles.phoneWrapper}
             animate={{ y: [0, -9, 0] }}
@@ -117,18 +76,17 @@ const Hero = () => {
             }}
           >
             <div className={styles.phone}>
-              <div className={styles.phoneTop}>
-                <span></span>
-              </div>
+              <div className={styles.phoneTop}></div>
 
               <img
                 src={appHomeImage}
-                alt="Wecanserve business card scanner application dashboard"
+                alt="ScanMyCard App Dashboard"
                 className={styles.phoneScreenshot}
               />
             </div>
           </motion.div>
 
+          {/* AI CARD */}
           <motion.div
             className={`${styles.floatingCard} ${styles.aiCard}`}
             animate={{ y: [0, -8, 0] }}
@@ -138,14 +96,17 @@ const Hero = () => {
               ease: "easeInOut",
             }}
           >
-            <span className={`${styles.floatingIcon} ${styles.greenIcon}`}>
+            <span
+              className={`${styles.floatingIcon} ${styles.greenIcon}`}
+            >
               <ScanLine size={25} />
             </span>
 
-            <strong>AI Extracted</strong>
-            <small>In seconds</small>
+            <strong>AI OCR Precision</strong>
+            <small>Instant extraction</small>
           </motion.div>
 
+          {/* CONTACT CARD */}
           <motion.div
             className={`${styles.floatingCard} ${styles.contactCard}`}
             animate={{ y: [0, 8, 0] }}
@@ -156,21 +117,22 @@ const Hero = () => {
             }}
           >
             <div className={styles.contactHeader}>
-              <span className={styles.avatar}>AD</span>
+              <span className={styles.avatar}>SC</span>
 
               <div>
-                <strong>Anand Dangi</strong>
-                <small>Business Professional</small>
+                <strong>Alex Reed</strong>
+                <small>VP of Business Development</small>
               </div>
             </div>
 
             <div className={styles.contactDetails}>
-              <span>+91 98765 43210</span>
-              <span>anand@wecanserve.com</span>
-              <span>Mumbai, India</span>
+              <span>alex.reed@enterprise.io</span>
+              <span>+1 (555) 349-2041</span>
+              <span>San Francisco, CA</span>
             </div>
           </motion.div>
 
+          {/* SAVED CARD */}
           <motion.div
             className={`${styles.floatingCard} ${styles.savedCard}`}
             animate={{ y: [0, -7, 0] }}
@@ -180,16 +142,20 @@ const Hero = () => {
               ease: "easeInOut",
             }}
           >
-            <span className={`${styles.floatingIcon} ${styles.blueIcon}`}>
+            <span
+              className={`${styles.floatingIcon} ${styles.blueIcon}`}
+            >
               <CheckCircle2 size={25} />
             </span>
 
-            <strong>Contacts Saved</strong>
-            <small>&amp; organized</small>
+            <strong>Contact Saved</strong>
+            <small>Synced &amp; Organized</small>
           </motion.div>
 
+          {/* DECORATIVE ARROW */}
           <div className={styles.dottedArrow}>
-            <span>All your contacts in one place</span>
+            <span>All contacts organized</span>
+
             <div className={styles.arrowLine}>↙</div>
           </div>
         </motion.div>

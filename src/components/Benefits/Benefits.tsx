@@ -1,88 +1,95 @@
 import { motion } from "framer-motion";
 import {
-  Zap,
-  CheckCircle,
-  FolderOpen,
   Download,
-  ShieldCheck,
-  WifiOff,
+  FolderKanban,
+  Lock,
+  ScanText,
+  Search,
+  Zap,
 } from "lucide-react";
 import styles from "./Benefits.module.css";
 
 const benefits = [
   {
-    title: "Lightning Fast",
-    description: "Extracts details in just seconds",
     icon: Zap,
-    tone: "green",
-  },
-  {
-    title: "High Accuracy",
-    description: "AI ensures maximum data accuracy",
-    icon: CheckCircle,
-    tone: "yellow",
-  },
-  {
-    title: "Smart Organization",
-    description: "Keep contacts neat and searchable",
-    icon: FolderOpen,
+    title: "Instant AI OCR",
+    description:
+      "Scan cards in under a second with high accuracy data extraction.",
     tone: "blue",
   },
   {
-    title: "Export Easily",
-    description: "Export to Excel, CSV or your CRM",
+    icon: FolderKanban,
+    title: "Custom Folders",
+    description:
+      "Group contacts into custom folders by event, project, or lead status.",
+    tone: "green",
+  },
+  {
+    icon: Search,
+    title: "Smart Search",
+    description:
+      "Quickly search through hundreds of cards by name, company, or job title.",
+    tone: "blue",
+  },
+  {
+    icon: ScanText,
+    title: "Multi-Language Support",
+    description:
+      "Reads and transcribes business cards across multiple languages accurately.",
+    tone: "green",
+  },
+  {
     icon: Download,
-    tone: "indigo",
+    title: "1-Tap Export",
+    description:
+      "Export single contacts or entire folders to CSV, Excel, and vCard formats.",
+    tone: "blue",
   },
   {
-    title: "Secure & Private",
-    description: "Your data is safe and encrypted",
-    icon: ShieldCheck,
-    tone: "emerald",
-  },
-  {
-    title: "Works Offline",
-    description: "Scan and access without internet",
-    icon: WifiOff,
-    tone: "red",
+    icon: Lock,
+    title: "Encrypted & Private",
+    description:
+      "Your lead data is secured with end-to-end cloud protection and privacy.",
+    tone: "green",
   },
 ];
 
 export default function Benefits() {
   return (
-    <section className={styles.section} id="benefits">
+    <section id="benefits" className={styles.section}>
       <div className={styles.container}>
         <motion.div
           className={styles.headingArea}
-          initial={{ opacity: 0, y: 24 }}
+          initial={{ opacity: 0, y: 20 }}
           whileInView={{ opacity: 1, y: 0 }}
-          viewport={{ once: true, amount: 0.3 }}
-          transition={{ duration: 0.6 }}
+          viewport={{ once: true }}
+          transition={{ duration: 0.5 }}
         >
           <h2 className={styles.title}>
-            Why You'll <span>Love</span> Using Our App
+            Built for <span>Faster Networking</span>
           </h2>
+          <p className={styles.subtitle}>
+            Everything you need to turn paper business cards into organized leads.
+          </p>
         </motion.div>
 
-        <div className={styles.grid}>
-          {benefits.map((b, index) => {
-            const Icon = b.icon;
+        <div className={styles.cardsGrid}>
+          {benefits.map((item, index) => {
+            const Icon = item.icon;
             return (
               <motion.div
-                key={b.title}
+                key={item.title}
                 className={styles.card}
-                initial={{ opacity: 0, y: 28 }}
+                initial={{ opacity: 0, y: 24 }}
                 whileInView={{ opacity: 1, y: 0 }}
-                viewport={{ once: true, amount: 0.2 }}
-                transition={{ duration: 0.45, delay: index * 0.08 }}
+                viewport={{ once: true }}
+                transition={{ duration: 0.35, delay: index * 0.06 }}
               >
-                <span
-                  className={`${styles.iconCircle} ${styles[`${b.tone}Tone`]}`}
-                >
-                  <Icon size={24} strokeWidth={2} />
-                </span>
-                <h3>{b.title}</h3>
-                <p>{b.description}</p>
+                <div className={`${styles.iconBox} ${styles[item.tone]}`}>
+                  <Icon size={24} />
+                </div>
+                <h3>{item.title}</h3>
+                <p>{item.description}</p>
               </motion.div>
             );
           })}

@@ -1,7 +1,9 @@
 .navbar {
   position: fixed;
+
   top: 0;
   left: 0;
+
   z-index: 1000;
 
   width: 100%;
@@ -11,6 +13,7 @@
   align-items: center;
 
   background: rgba(255, 255, 255, 0.88);
+
   border-bottom: 1px solid transparent;
 
   backdrop-filter: blur(18px);
@@ -23,162 +26,259 @@
     box-shadow 0.25s ease;
 }
 
+
+/* =========================================
+   SCROLLED NAVBAR
+========================================= */
+
 .navbarScrolled {
   height: 70px;
 
-  background: rgba(255, 255, 255, 0.96);
-  border-color: rgba(15, 23, 42, 0.07);
+  background: rgba(255, 255, 255, 0.97);
 
-  box-shadow: 0 12px 35px rgba(15, 23, 42, 0.06);
+  border-color: rgba(0, 74, 217, 0.08);
+
+  box-shadow:
+    0 12px 35px rgba(15, 23, 42, 0.06);
 }
+
+
+/* =========================================
+   CONTAINER
+========================================= */
 
 .navbarContainer {
   width: min(1320px, calc(100% - 48px));
+
+  height: 100%;
+
   margin: 0 auto;
 
   display: flex;
   align-items: center;
-  justify-content: space-between;
+
   gap: 32px;
 }
 
+
+/* =========================================
+   LOGO
+========================================= */
+
 .brand {
   display: inline-flex;
+
   align-items: center;
-  gap: 11px;
 
   flex-shrink: 0;
 
-  color: #101828;
   text-decoration: none;
 }
 
-.logo {
-  width: 40px;
-  height: 40px;
+.brandLogoImage {
+  display: block;
 
-  display: inline-flex;
+  width: auto;
+  height: 44px;
+
+  object-fit: contain;
+
+  transition:
+    height 0.25s ease,
+    transform 0.2s ease;
+}
+
+.brand:hover .brandLogoImage {
+  transform: translateY(-1px);
+}
+
+
+/* =========================================
+   DESKTOP NAVIGATION
+========================================= */
+
+.desktopNavigation {
+  flex: 1;
+
+  display: flex;
+
   align-items: center;
   justify-content: center;
 
-  color: #ffffff;
-  background: linear-gradient(145deg, #18b75b, #079443);
-
-  border-radius: 11px;
-
-  box-shadow: 0 8px 20px rgba(12, 166, 75, 0.2);
-}
-
-.brandName {
-  font-size: 22px;
-  font-weight: 800;
-  letter-spacing: -0.7px;
-}
-
-.desktopNavigation {
-  display: flex;
-  align-items: center;
-  gap: 38px;
+  gap: 36px;
 }
 
 .navLink {
   position: relative;
 
+  display: inline-flex;
+  align-items: center;
+
+  padding: 8px 0;
+
   color: #1d2939;
 
   font-size: 14px;
   font-weight: 600;
+
   text-decoration: none;
 
-  transition: color 0.2s ease;
+  white-space: nowrap;
+
+  transition:
+    color 0.2s ease,
+    transform 0.2s ease;
 }
 
 .navLink::after {
   content: "";
 
   position: absolute;
-  left: 0;
-  bottom: -7px;
+
+  left: 50%;
+  bottom: 0;
 
   width: 0;
   height: 2px;
 
-  background: #0cac4c;
+  transform: translateX(-50%);
+
+  background: #004ad9;
+
   border-radius: 999px;
 
   transition: width 0.2s ease;
 }
 
 .navLink:hover {
-  color: #0a9d45;
+  color: #004ad9;
+
+  transform: translateY(-1px);
 }
 
 .navLink:hover::after {
   width: 100%;
 }
 
+
+/* =========================================
+   GET THE APP
+========================================= */
+
 .downloadButton {
-  min-height: 43px;
-  padding: 0 21px;
+  min-height: 44px;
+
+  padding: 0 20px;
 
   display: inline-flex;
+
   align-items: center;
   justify-content: center;
+
   gap: 8px;
 
+  flex-shrink: 0;
+
   color: #ffffff;
-  background: linear-gradient(135deg, #13b354, #079746);
+
+  background: #004ad9;
+
+  border: 1px solid #004ad9;
 
   border-radius: 10px;
 
   font-size: 14px;
   font-weight: 700;
+
   text-decoration: none;
 
-  box-shadow: 0 10px 24px rgba(11, 161, 72, 0.2);
+  box-shadow:
+    0 8px 20px rgba(0, 74, 217, 0.18);
 
   transition:
     transform 0.2s ease,
+    background 0.2s ease,
     box-shadow 0.2s ease;
 }
 
 .downloadButton:hover {
+  background: #003fba;
+
   transform: translateY(-2px);
 
-  box-shadow: 0 14px 28px rgba(11, 161, 72, 0.27);
+  box-shadow:
+    0 12px 25px rgba(0, 74, 217, 0.25);
 }
+
+
+/* =========================================
+   MOBILE BUTTON
+========================================= */
 
 .menuButton {
   width: 44px;
   height: 44px;
 
   display: none;
+
   align-items: center;
   justify-content: center;
 
+  flex-shrink: 0;
+
   color: #101828;
+
   background: #ffffff;
 
-  border: 1px solid #e6e9ed;
+  border: 1px solid #e3e8ef;
+
   border-radius: 11px;
 
   cursor: pointer;
+
+  transition:
+    background 0.2s ease,
+    border-color 0.2s ease,
+    transform 0.2s ease;
 }
+
+.menuButton:hover {
+  background: #f7faff;
+
+  border-color: #d5deea;
+}
+
+.menuButton:active {
+  transform: scale(0.96);
+}
+
+
+/* =========================================
+   MOBILE MENU
+========================================= */
 
 .mobileMenu {
   position: fixed;
+
   top: 78px;
   left: 0;
 
   width: 100%;
 
   visibility: hidden;
+
   opacity: 0;
-  transform: translateY(-15px);
+
+  transform: translateY(-12px);
 
   background: rgba(255, 255, 255, 0.98);
-  border-top: 1px solid #edf0f2;
-  border-bottom: 1px solid #edf0f2;
+
+  border-top: 1px solid #edf0f4;
+
+  border-bottom: 1px solid #edf0f4;
+
+  box-shadow:
+    0 20px 35px rgba(15, 23, 42, 0.08);
 
   pointer-events: none;
 
@@ -190,65 +290,174 @@
 
 .mobileMenuOpen {
   visibility: visible;
+
   opacity: 1;
+
   transform: translateY(0);
 
   pointer-events: auto;
 }
 
+
+/* =========================================
+   MOBILE NAVIGATION
+========================================= */
+
 .mobileNavigation {
   width: min(100% - 36px, 600px);
+
   margin: 0 auto;
-  padding: 18px 0 24px;
+
+  padding: 16px 0 22px;
 
   display: flex;
+
   flex-direction: column;
-  gap: 4px;
+
+  gap: 2px;
 }
 
-.mobileNavigation > a:not(.mobileDownloadButton) {
-  padding: 14px 10px;
+.mobileNavLink {
+  min-height: 52px;
+
+  padding: 0 10px;
+
+  display: flex;
+
+  align-items: center;
+
+  justify-content: space-between;
 
   color: #1d2939;
 
+  border-bottom: 1px solid #f0f2f5;
+
   font-size: 16px;
-  font-weight: 650;
+
+  font-weight: 600;
+
   text-decoration: none;
 
-  border-bottom: 1px solid #f0f2f4;
+  transition:
+    color 0.2s ease,
+    padding 0.2s ease;
 }
 
+.mobileNavLink:hover {
+  color: #004ad9;
+
+  padding-left: 14px;
+}
+
+.mobileArrow {
+  color: #9aa6b6;
+
+  font-size: 18px;
+
+  transition:
+    color 0.2s ease,
+    transform 0.2s ease;
+}
+
+.mobileNavLink:hover .mobileArrow {
+  color: #004ad9;
+
+  transform: translateX(3px);
+}
+
+
+/* =========================================
+   MOBILE CTA
+========================================= */
+
 .mobileDownloadButton {
-  min-height: 48px;
+  min-height: 50px;
+
   margin-top: 14px;
 
   display: inline-flex;
+
   align-items: center;
   justify-content: center;
+
   gap: 9px;
 
   color: #ffffff;
-  background: #0aa74a;
+
+  background: #004ad9;
 
   border-radius: 11px;
 
   font-size: 15px;
-  font-weight: 750;
+
+  font-weight: 700;
+
   text-decoration: none;
+
+  box-shadow:
+    0 8px 20px rgba(0, 74, 217, 0.18);
+
+  transition:
+    background 0.2s ease,
+    transform 0.2s ease;
 }
 
+.mobileDownloadButton:hover {
+  background: #003fba;
+
+  transform: translateY(-1px);
+}
+
+
+/* =========================================
+   TABLET
+========================================= */
+
+@media (max-width: 1050px) {
+
+  .desktopNavigation {
+    gap: 24px;
+  }
+
+  .navLink {
+    font-size: 13px;
+  }
+
+  .navbarContainer {
+    gap: 20px;
+  }
+
+}
+
+
+/* =========================================
+   MOBILE
+========================================= */
+
 @media (max-width: 950px) {
+
   .desktopNavigation,
   .downloadButton {
     display: none;
   }
 
+  .navbarContainer {
+    justify-content: space-between;
+  }
+
   .menuButton {
     display: inline-flex;
   }
+
 }
 
+
+/* =========================================
+   SMALL MOBILE
+========================================= */
+
 @media (max-width: 600px) {
+
   .navbar,
   .navbarScrolled {
     height: 68px;
@@ -258,16 +467,32 @@
     width: calc(100% - 28px);
   }
 
-  .logo {
-    width: 37px;
-    height: 37px;
+  .brandLogoImage {
+    height: 38px;
   }
 
-  .brandName {
-    font-size: 20px;
+  .menuButton {
+    width: 42px;
+    height: 42px;
   }
 
   .mobileMenu {
     top: 68px;
   }
+
+}
+
+
+/* =========================================
+   ACCESSIBILITY
+========================================= */
+
+.navLink:focus-visible,
+.downloadButton:focus-visible,
+.menuButton:focus-visible,
+.mobileNavLink:focus-visible,
+.mobileDownloadButton:focus-visible {
+  outline: 3px solid rgba(0, 74, 217, 0.22);
+
+  outline-offset: 3px;
 }
