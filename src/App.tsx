@@ -4,7 +4,6 @@ import HowItWorks from "./components/HowItWorks/HowItWorks";
 import DemoVideo from "./components/DemoVideo/DemoVideo";
 import Benefits from "./components/Benefits/Benefits";
 import Plans from "./components/Plans/Plans";
-// import WhyDownload from "./components/WhyDownload/WhyDownload";
 import CTABanner from "./components/CTABanner/CTABanner";
 import Footer from "./components/Footer/Footer";
 import "./App.css";
@@ -13,31 +12,44 @@ function App() {
   return (
     <>
       <Navbar />
+
       <main>
         <Hero />
         <HowItWorks />
         <DemoVideo />
         <Benefits />
         <Plans />
-        {/* <WhyDownload /> */}
         <CTABanner />
       </main>
+
       <Footer />
 
+      {/* Floating Google Play Button */}
       <a
-        href="#"
+        href="#download"
         className="floatingPlayBtn"
-        target="_blank"
-        rel="noopener noreferrer"
-        aria-label="Get it on Google Play"
+        aria-label="Get ScanMyCard on Google Play"
       >
-        <svg width="22" height="22" viewBox="0 0 24 24" fill="currentColor">
-          <path d="M3.609 1.814L13.792 12 3.61 22.186a.996.996 0 01-.61-.92V2.734a1 1 0 01.609-.92zm10.89 10.893l2.302 2.302-10.937 6.333 8.635-8.635zm3.199-3.199l2.302 2.302a1 1 0 010 1.38l-2.302 2.302L15.394 12l2.304-2.492zM5.864 3.455l10.937 6.333-2.302 2.302-8.635-8.635z" />
+        <svg
+          className="floatingPlayIcon"
+          viewBox="0 0 24 24"
+          aria-hidden="true"
+        >
+          <path d="M3.5 2.8c-.3.3-.5.8-.5 1.4v15.6c0 .6.2 1.1.5 1.4L13.2 12 3.5 2.8Z" />
+          <path d="m16.4 15.2-2.6-2.5L4.1 21c.3.1.7.1 1.1-.1l11.2-5.7Z" />
+          <path d="m16.4 8.8-11.2-5.7c-.4-.2-.8-.2-1.1-.1l9.7 8.3 2.6-2.5Z" />
+          <path d="m20 10.7-2.9-1.5-2.9 2.8 2.9 2.8 2.9-1.5c.8-.4.8-1.9 0-2.6Z" />
         </svg>
-        <div className="floatingPlayBtnText">
-          <span className="floatingPlayBtnSmall">GET IT ON</span>
-          <span className="floatingPlayBtnBig">Google Play</span>
-        </div>
+
+        <span className="floatingPlayText">
+          <span className="floatingPlaySmall">
+            GET IT ON
+          </span>
+
+          <span className="floatingPlayBig">
+            Google Play
+          </span>
+        </span>
       </a>
     </>
   );
