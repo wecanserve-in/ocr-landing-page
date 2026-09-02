@@ -1,6 +1,6 @@
 import { useState } from "react";
 import { motion, AnimatePresence } from "framer-motion";
-import { Check, Download, Zap } from "lucide-react";
+import { Check, Zap } from "lucide-react";
 import styles from "./Plans.module.css";
 
 interface PlanItem {
