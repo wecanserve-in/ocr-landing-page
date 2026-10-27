@@ -1,32 +1,19 @@
-# React + TypeScript + Vite
+# ScanMyCard website
 
-This template provides a minimal setup to get React working in Vite with HMR and some Oxlint rules.
+Marketing site for the ScanMyCard Android app, live at **https://scanmycard.in**.
 
-Currently, two official plugins are available:
+Plain static HTML/CSS/JS: no build step and no npm. Open `index.html` in a browser to preview.
 
-- [@vitejs/plugin-react](https://github.com/vitejs/vite-plugin-react/blob/main/packages/plugin-react) uses [Oxc](https://oxc.rs)
-- [@vitejs/plugin-react-swc](https://github.com/vitejs/vite-plugin-react/blob/main/packages/plugin-react-swc) uses [SWC](https://swc.rs/)
+## Pages
+`/` home · `/pricing` · `/privacy` · `/terms` · `/refund-policy` · `/delete-account` · `/support` · `404.html`
 
-## React Compiler
+The Privacy, Terms, Refund and Delete-account URLs are used in Google Play Console and Razorpay KYC. Keep these paths.
 
-The React Compiler is not enabled on this template because of its impact on dev & build performances. To add it, see [this documentation](https://react.dev/learn/react-compiler/installation).
+## Editing
+- Prices appear in `index.html`, `pricing/index.html` and the home page JSON-LD, each marked with a `<!-- PRICING -->` comment. Keep them in sync with the app and backend.
+- The Play Store link is in the page hrefs and in `PLAY_URL` in `assets/js/site.js`.
+- After changing CSS or JS, bump the `?v=` number where the files are linked (they're cached for 30 days).
 
-## Expanding the Oxlint configuration
-
-If you are developing a production application, we recommend enabling type-aware lint rules by installing `oxlint-tsgolint` and editing `.oxlintrc.json`:
-
-```json
-{
-  "$schema": "./node_modules/oxlint/configuration_schema.json",
-  "plugins": ["react", "typescript", "oxc"],
-  "options": {
-    "typeAware": true
-  },
-  "rules": {
-    "react/rules-of-hooks": "error",
-    "react/only-export-components": ["warn", { "allowConstantExport": true }]
-  }
-}
-```
-
-See the [Oxlint rules documentation](https://oxc.rs/docs/guide/usage/linter/rules) for the full list of rules and categories.
+## Hosting
+- **Hostinger** (scanmycard.in): upload the folder contents to `public_html`. `.htaccess` handles HTTPS/www redirects, clean URLs, 404 and caching.
+- **Vercel**: works as-is. `vercel.json` turns on clean URLs.
