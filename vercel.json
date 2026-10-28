@@ -1,4 +1,9 @@
 {
+  "$schema": "https://openapi.vercel.sh/vercel.json",
+  "framework": null,
+  "installCommand": "echo 'Static site: nothing to install'",
+  "buildCommand": "mkdir -p dist && cp -r *.html *.ico *.png *.txt *.xml assets delete-account pricing privacy refund-policy support terms dist/",
+  "outputDirectory": "dist",
   "cleanUrls": true,
   "trailingSlash": false
 }
